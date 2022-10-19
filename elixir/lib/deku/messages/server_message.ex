@@ -4,10 +4,10 @@ defmodule Deku.ServerMessage do
   """
 
   @type t :: %__MODULE__{
-    seq_nu: non_neg_integer(),
-    version: non_neg_integer(),
-    msg: struct()
-  }
+          seq_nu: non_neg_integer(),
+          version: non_neg_integer(),
+          msg: struct()
+        }
 
   @enforce_keys [:seq_nu, :version, :msg]
   defstruct [:seq_nu, :version, :msg]

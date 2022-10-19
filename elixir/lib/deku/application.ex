@@ -8,7 +8,7 @@ defmodule Deku.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      Deku.Server
+      {ThousandIsland, port: 42000, handler_module: Deku.Handler}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

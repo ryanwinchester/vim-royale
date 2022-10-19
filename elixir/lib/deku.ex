@@ -51,7 +51,7 @@ defmodule Deku do
       }
 
   """
-  @spec decode(binary) :: Deku.ServerMessage.t
+  @spec decode(binary) :: Deku.ServerMessage.t()
   def decode(<<seq::uint(16), ver::uint(8), msg::binary>>) do
     %Deku.ServerMessage{
       seq_nu: seq,

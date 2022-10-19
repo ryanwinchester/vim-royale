@@ -22,7 +22,7 @@ defmodule Deku.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # No deps yet bishes
+      {:thousand_island, "~> 0.5"}
     ]
   end
 end
