@@ -2,6 +2,29 @@ defmodule ScrollerWeb.ClientLive.Index do
   use ScrollerWeb, :live_view
 
   @impl true
+  def render(assigns) do
+    ~H"""
+    <div class="tokyonight">
+      <div>
+        <.live_component id="background" module={ScrollerWeb.ClientLive.BackgroundComponent} />
+      </div>
+
+      <div class="center">
+        <.live_component id="status" module={ScrollerWeb.ClientLive.StatusComponent} />
+      </div>
+
+      <div class="center">
+        <.live_component
+          id="terminal"
+          module={ScrollerWeb.ClientLive.TerminalComponent}
+          rows={@rows}
+        />
+      </div>
+    </div>
+    """
+  end
+
+  @impl true
   def mount(_params, _session, socket) do
     scroll = Enum.map(Scroller.text(), &Stream.cycle(&1))
 
