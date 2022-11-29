@@ -31,14 +31,14 @@ defmodule ScrollerWeb.ClientLive.Index do
     {:ok,
       socket
       |> assign(:scroll, scroll)
-      |> assign(:rows, Enum.map(scroll, &slice_row(&1, 0)))
+      |> assign(:rows, next_slice(scroll, 0))
       |> assign(:column, 0)}
   end
 
   @impl true
   def handle_params(params, _session, socket) do
     params
-    |> Map.get("tick", "500")
+    |> Map.get("tick", "50")
     |> String.to_integer()
     |> :timer.send_interval(self(), :tick)
 
