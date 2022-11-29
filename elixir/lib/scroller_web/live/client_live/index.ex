@@ -26,13 +26,20 @@ defmodule ScrollerWeb.ClientLive.Index do
 
   @impl true
   def handle_info(:tick, socket) do
-    column = socket.assigns.column + 1
+    column = increment_column(socket.assigns.column)
+
+    IO.inspect(column)
 
     {:noreply,
      socket
      |> assign(:rows, next_slice(socket.assigns.scroll, column))
      |> assign(:column, column)}
   end
+
+  # A row of text is `360` characters. To avoid infinitely increasing column
+  # counter, roll-over at `360`.
+  defp increment_column(col) when col > 359, do: 0
+  defp increment_column(col), do: col + 1
 
   # Get the next slice of rows.
   defp next_slice(scroll, column) do
