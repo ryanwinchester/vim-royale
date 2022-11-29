@@ -14,10 +14,10 @@ defmodule ScrollerWeb.ClientLive.TerminalComponent do
   defp terminal_relative_nu(assigns) do
     ~H"""
     <div class="terminal-relative-nu">
-      <%= for i <- 0..23 do %>
-        <div key={i} class="terminal-column">
-          <%= for j <- 0..2 do %>
-            <div key={j} class="terminal-byte"> </div>
+      <%= for _ <- 0..23 do %>
+        <div class="terminal-column">
+          <%= for _ <- 0..2 do %>
+            <div class="terminal-byte"></div>
           <% end %>
         </div>
       <% end %>
@@ -29,8 +29,7 @@ defmodule ScrollerWeb.ClientLive.TerminalComponent do
     ~H"""
     <div class="terminal-display">
       <%= for row_items <- @rows, v <- row_items do %>
-        <div class={"terminal-byte #{get_str(v)}"}>
-        </div>
+        <div class={"terminal-byte #{get_str(v)}"}></div>
       <% end %>
     </div>
     """
