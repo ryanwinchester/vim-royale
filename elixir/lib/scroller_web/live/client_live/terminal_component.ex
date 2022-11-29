@@ -28,13 +28,15 @@ defmodule ScrollerWeb.ClientLive.TerminalComponent do
   defp terminal_display(assigns) do
     ~H"""
     <div class="terminal-display">
-      <%= for row_items <- @rows, v <- row_items do %>
-        <div class={"terminal-byte #{get_str(v)}"}></div>
+      <%= for row <- @rows, char <- row do %>
+        <div class={"terminal-byte #{get_str(char)}"}></div>
       <% end %>
     </div>
     """
   end
 
+  # Converts a char to a string.
+  # '0' == [48]; '1' == [49]; etc.
   defp get_str(48), do: "off"
   defp get_str(49), do: "partial"
   defp get_str(_), do: "on"
