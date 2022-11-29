@@ -16,10 +16,18 @@ defmodule ScrollerWeb.ClientLive.Index do
 
   @impl true
   def handle_params(params, _session, socket) do
-    params
-    |> Map.get("tick", "50")
-    |> String.to_integer()
-    |> :timer.send_interval(self(), :tick)
+    # Users can pass in a `tick` param.
+    # Can't go lower than `34` or higher than `2000`.
+    # Defaults to `50` for a decently smooth scroll.
+    tick_interval =
+      params
+      |> Map.get("tick", "50")
+      |> String.to_integer()
+      |> then(&max(&1, 34))
+      |> then(&min(&1, 2000))
+
+    # Send this LiveView a `:tick` message every `tick_interval` ms.
+    :timer.send_interval(tick_interval, self(), :tick)
 
     {:noreply, socket}
   end
