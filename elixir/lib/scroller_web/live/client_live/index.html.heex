@@ -1,0 +1,17 @@
+<div class="tokyonight">
+  <div>
+    <.live_component id="background" module={ScrollerWeb.ClientLive.BackgroundComponent} />
+  </div>
+
+  <div class="center">
+    <.live_component id="status" module={ScrollerWeb.ClientLive.StatusComponent} />
+  </div>
+
+  <div class="center">
+    <.live_component
+      id="terminal"
+      module={ScrollerWeb.ClientLive.TerminalComponent}
+      rows={@rows}
+    />
+  </div>
+</div>
