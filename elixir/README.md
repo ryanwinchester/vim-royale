@@ -1,5 +1,16 @@
 # Scroller
 
+## Reading the code
+
+The code resides in the following three files, basically.
+The rest is default framework stuff.
+
+1. [lib/scroller.ex](https://github.com/ryanwinchester/vim-royale/blob/main/elixir/lib/scroller.ex)
+2. [lib/scroller_web/live/client_live/index.ex](https://github.com/ryanwinchester/vim-royale/blob/main/elixir/lib/scroller_web/live/client_live/index.ex)
+3. [lib/scroller_web/live/client_live/terminal_component.ex](https://github.com/ryanwinchester/vim-royale/blob/main/elixir/lib/scroller_web/live/client_live/terminal_component.ex)
+
+## Using
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
