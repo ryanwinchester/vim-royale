@@ -34,8 +34,10 @@ defmodule ScrollerWeb.ClientLive.Index do
      |> assign(:column, column)}
   end
 
-  defp next_slice(scroll, column), do: Enum.map(scroll, &slice_row(&1, column))
-  defp slice_row(row, column), do: Enum.slice(row, column, 80)
+  # Get the next slice of rows.
+  defp next_slice(scroll, column) do
+    Enum.map(scroll, &Enum.slice(&1, column, 80))
+  end
 
   @impl true
   def render(assigns) do
