@@ -1,11 +1,12 @@
 defmodule ScrollerWeb.ClientLive.Index do
   use ScrollerWeb, :live_view
 
+  alias ScrollerWeb.ClientLive.ScrollText
   alias ScrollerWeb.ClientLive.TerminalComponent
 
   @impl true
   def mount(_params, _session, socket) do
-    scroll = Enum.map(Scroller.text(), &Stream.cycle(&1))
+    scroll = Enum.map(ScrollText.text(), &Stream.cycle(&1))
 
     {:ok,
      socket
@@ -17,8 +18,8 @@ defmodule ScrollerWeb.ClientLive.Index do
   @impl true
   def handle_params(params, _session, socket) do
     # Users can pass in a `tick` param.
-    # Can't go lower than `34` or higher than `2000`.
-    # Defaults to `50` for a decently smooth scroll.
+    #  * can't go lower than `34` or higher than `2000`.
+    #  * defaults to `50` for a decently smooth scroll.
     tick_interval =
       params
       |> Map.get("tick", "50")

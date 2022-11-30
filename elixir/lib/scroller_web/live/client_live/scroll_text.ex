@@ -1,6 +1,6 @@
-defmodule Scroller do
+defmodule ScrollerWeb.ClientLive.ScrollText do
   @moduledoc """
-  Scroller...
+  The text to convert.
   """
 
   @text [
@@ -19,28 +19,9 @@ defmodule Scroller do
     '000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000'
   ]
 
-  @text_encoded (
-    for row <- @text do
-      for char <- row, into: <<>> do
-        case char do
-          48 -> <<0::2>>
-          49 -> <<1::2>>
-          50 -> <<2::2>>
-        end
-      end
-    end
-  )
-
   @doc """
   Returns a list of charlists representing the ASCII-art text.
   """
   @spec text() :: [charlist()]
   def text, do: @text
-
-  @doc """
-  Returns a list of rows as binary-encoded text representing the ASCII-art text.
-  The numbers are encoded into 2 bits each in the binary.
-  """
-  @spec text_encoded() :: [binary()]
-  def text_encoded, do: @text_encoded
 end
