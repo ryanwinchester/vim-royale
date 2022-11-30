@@ -23,8 +23,8 @@ defmodule ScrollerWeb.ClientLive.Index do
       params
       |> Map.get("tick", "50")
       |> String.to_integer()
-      |> then(&max(&1, 34))
-      |> then(&min(&1, 2000))
+      |> min(2000)
+      |> max(34)
 
     # Send this LiveView a `:tick` message every `tick_interval` ms.
     :timer.send_interval(tick_interval, self(), :tick)
